@@ -128,8 +128,8 @@
           (-> result
               mt/boolean-ids-and-timestamps
               (update-in [:collection :name] #(some-> % string?))
-              ;; `:score` is just used for debugging and would be a pain to match against
-              (dissoc :score))))))))
+              ;; `:score` is just used for debugging and would be a pain to match against.
+              (dissoc :score :updated_at))))))))
 
 (defn- search-request
   [& args]

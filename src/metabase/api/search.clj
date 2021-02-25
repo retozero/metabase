@@ -72,6 +72,8 @@
    ;; returned for Card and Dashboard
    :collection_position :integer
    :favorite            :boolean
+   ;; returned for everything except Collection
+   :updated_at          :timestamp
    ;; returned for Card only
    :dashboardcard_count :integer
    :dataset_query       :text
@@ -124,8 +126,7 @@
       ;;
       ;; For MySQL, this is not needed.
       :else
-      [(if (= (mdb/db-type) :mysql)
-         nil
+      [(when-not (= (mdb/db-type) :mysql)
          (hx/cast col-type nil))
        search-col])))
 
