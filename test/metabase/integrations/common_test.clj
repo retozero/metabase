@@ -86,11 +86,11 @@
              (group-memberships user)))))
 
   (testing "does adding & removing at the same time work correctly?"
-    (is (= #{":metabase.integrations.common-test/group-2" "All Users"}
-           (with-user-in-groups [group-1 {:name (str ::group-1)}
-                                 group-2 {:name (str ::group-2)}
-                                 user    [group-1]]
-             (integrations.common/sync-group-memberships! user #{group-2} false)
+    (with-user-in-groups [group-1 {:name (str ::group-1)}
+                          group-2 {:name (str ::group-2)}
+                          user    [group-1]]
+      (integrations.common/sync-group-memberships! user #{group-2} false)
+      (is (= #{":metabase.integrations.common-test/group-2" "All Users"}
              (group-memberships user)))))
 
   (testing "if we attempt to add a user to a group that doesn't exist, does the group sync complete for the other groups?"
