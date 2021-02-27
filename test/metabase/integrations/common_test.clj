@@ -104,9 +104,9 @@
   (mt/with-test-user :crowberto
     (testing "with admin group sync enabled"
       (testing "are admins synced?"
-        (is (= #{"Administrators" "All Users"}
-               (with-user-in-groups [user]
-                 (integrations.common/sync-group-memberships! user [(group/admin)] true)
+        (with-user-in-groups [user]
+          (integrations.common/sync-group-memberships! user [(group/admin)] true)
+          (is (= #{"Administrators" "All Users"}
                  (group-memberships user)))))
 
       (testing "are administrators removed appropriately?"
