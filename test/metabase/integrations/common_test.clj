@@ -117,9 +117,9 @@
 
   (testing "with admin group sync disabled"
     (testing "are admins synced?"
-      (is (= #{"All Users"}
-             (with-user-in-groups [user]
-               (integrations.common/sync-group-memberships! user [(group/admin)] false)
+      (with-user-in-groups [user]
+        (integrations.common/sync-group-memberships! user [(group/admin)] false)
+        (is (= #{"All Users"}
                (group-memberships user)))))
 
     (testing "are administrators removed appropriately?"
