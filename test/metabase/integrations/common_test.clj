@@ -51,11 +51,11 @@
 
 (deftest sync-groups-test
   (testing "does syncing group memberships leave existing memberships in place if nothing has changed?"
-    (is (= #{"All Users" ":metabase.integrations.common-test/group"}
-           (with-user-in-groups [group {:name (str ::group)}
-                                 user  [group]]
-             (integrations.common/sync-group-memberships! user #{group} false)
-             (group-memberships user)))))
+    (with-user-in-groups [group {:name (str ::group)}
+                          user  [group]]
+      (integrations.common/sync-group-memberships! user #{group} false)
+      (is (= #{"All Users" ":metabase.integrations.common-test/group"}
+             (group-memberships user))))
 
   (testing "the actual `PermissionsGroupMembership` object should not have been replaced"
     (with-user-in-groups [group {:name (str ::group)}
