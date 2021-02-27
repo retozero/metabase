@@ -78,12 +78,11 @@
              (integrations.common/sync-group-memberships! user #{group-1 group-2} false)
              (group-memberships user)))))
 
-  (testing "does syncing group memberships remove users from old groups correctly?"
-    (is (= #{"All Users"}
-           (with-user-in-groups [group-1 {:name (str ::group-1)}
-                                 group-2 {:name (str ::group-2)}
-                                 user    [group-1]]
-             (integrations.common/sync-group-memberships! user #{} false)
+    (with-user-in-groups [group-1 {:name (str ::group-1)}
+                          group-2 {:name (str ::group-2)}
+                          user    [group-1]]
+      (integrations.common/sync-group-memberships! user #{} false)
+      (is (= #{"All Users"}
              (group-memberships user)))))
 
   (testing "does adding & removing at the same time work correctly?"
