@@ -132,7 +132,8 @@
    [org.flatland/ordered "1.5.9"]                                     ; ordered maps & sets
    [org.liquibase/liquibase-core "3.6.3"                              ; migration management (Java lib)
     :exclusions [ch.qos.logback/logback-classic]]
-   [org.mariadb.jdbc/mariadb-java-client "2.6.2"]                     ; MySQL/MariaDB driver
+   ;;   [org.mariadb.jdbc/mariadb-java-client "2.6.2"]                     ; MySQL/MariaDB drive
+   [mysql/mysql-connector-java "5.1.48"]                              ; MySQL/MariaDB driver
    [org.postgresql/postgresql "42.2.18"]                              ; Postgres driver
    [org.slf4j/slf4j-api "1.7.30"]                                     ; abstraction for logging frameworks -- allows end user to plug in desired logging framework at deployment time
    [org.tcrawley/dynapath "1.1.0"]                                    ; Dynamically add Jars (e.g. Oracle or Vertica) to classpath
